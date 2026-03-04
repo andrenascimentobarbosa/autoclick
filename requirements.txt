@@ -1,0 +1,7 @@
+Manually install those with pip
+
+pyautogui 
+opencv-python 
+pillow 
+pyscreeze
+

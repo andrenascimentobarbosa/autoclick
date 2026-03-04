@@ -1,0 +1,64 @@
+######################################################################
+Take screenshots of the icons you want to click.
+Notice that the .png filenames must match the screenshot filenames.
+#######################################################################
+
+
+
+#############################
+Create a virtual environment
+and install dependencies
+#############################
+    python3 -m venv autoclick
+    cd autoclick
+    source bin/activate
+    pip install pyautogui opencv-python pillow pyscreeze
+
+    mkdir src
+    cd src
+
+
+
+
+##################
+Create the script
+##################
+vi main.py
+
+    #!/usr/bin/env python3
+
+    import pyautogui
+    import time
+
+    pyautogui.useImageNotFoundException(False)
+
+    time.sleep(3)
+
+    icons = ["3dots.png", "trash.png", "confirm.png"]
+
+    while True:
+        found_any = False
+
+        for icon in icons:
+            location = pyautogui.locateOnScreen(icon, confidence=0.8)
+
+            if location:
+                found_any = True
+                pyautogui.click(pyautogui.center(location))
+                time.sleep(2)
+
+        if not found_any:
+            pyautogui.hotkey("ctrl", "r")
+            time.sleep(5)
+
+
+
+
+#################################
+Make it executable and run it
+#################################
+    chmod +x main.py
+    ./main.py
+
+
+
