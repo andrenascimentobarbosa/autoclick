@@ -1,4 +1,4 @@
-#!/usr/bin/env python3 (please change this)
+#!/usr/bin/env python3
 
 import pyautogui
 import time
